@@ -540,7 +540,10 @@
 
   <div id="gameResult" style="display:none;">
     <p class="game-result-text" id="gameResultText"></p>
-    <button class="cta" id="continueToGalleryBtn">Lanjut ke Galeri 🤍</button>
+    <div class="game-cta-row">
+      <button class="cta" id="retryGameBtn">Coba Lagi 🔁</button>
+      <button class="cta ghost" id="continueToGalleryBtn">Lanjut ke Galeri 🤍</button>
+    </div>
   </div>
 </section>
 
@@ -587,7 +590,9 @@ const CONFIG = {
     { caption: "Lucu lucu", rot: -2, src: "foto/foto3.png" },
     { caption: "Happy Graduate ya hideung", rot: 4, src: "foto/foto4.png" },
     { caption: "Dingin tetapi tidak kejam", rot: -3, src: "foto/foto5.jpg" },
-    { caption: "Cantik emang nyatanya", rot: 2, src: "foto/foto6.jpg" }
+    { caption: "Cantik emang nyatanya", rot: 2, src: "foto/foto6.jpg" },
+    { caption: "ganti caption ini ya", rot: -3, src: "foto/foto7.jpg" },
+    { caption: "ganti caption ini juga", rot: 4, src: "foto/foto8.jpg" }
   ]
 };
 /* ========================================================= */
@@ -785,10 +790,10 @@ function endHeartGame(){
   document.getElementById('gameHud').style.display = 'none';
 
   let msg;
-  if(gameScore >= 25){ msg = `Wow, ${gameScore} hati ketembak! cinta lu emang segede itu ternyata 🥹`; }
-  else if(gameScore >= 15){ msg = `${gameScore} hati, lumayan jago juga lu 🤍`; }
-  else if(gameScore >= 5){ msg = `${gameScore} hati... yaudah niatnya yang penting kan`; }
-  else { msg = `cuma ${gameScore} hati? gapapa deh, kasihnya kan lebih dari itu`; }
+  if(gameScore >= 20){ msg = `Wow, ${gameScore} hati ketembak! kayanya bukan gua doang yang kecintaan nih 🥹`; }
+  else if(gameScore >= 15){ msg = `${gameScore} hati. nanggung amat... sekali lagi geh biar 20 hati`; }
+  else if(gameScore >= 5){ msg = `${gameScore} hati? cupu amat segitu doang`; }
+  else { msg = `cuma ${gameScore} gembel ah ga niat`; }
 
   document.getElementById('gameResultText').textContent = msg;
   document.getElementById('gameResult').style.display = 'block';
@@ -802,6 +807,7 @@ function goToGallery(){
 document.getElementById('startGameBtn').addEventListener('click', startHeartGame);
 document.getElementById('skipGameBtn').addEventListener('click', goToGallery);
 document.getElementById('continueToGalleryBtn').addEventListener('click', goToGallery);
+document.getElementById('retryGameBtn').addEventListener('click', startHeartGame);
 </script>
 </body>
 </html>
