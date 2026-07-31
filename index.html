@@ -287,6 +287,18 @@
     font-size:30px;
     color:var(--blue);
   }
+  .tiny-note{
+    position:absolute;
+    bottom:14px;
+    left:20px;
+    font-size:11px;
+    font-family:'Quicksand',sans-serif;
+    color:var(--ink);
+    opacity:.4;
+    text-align:left;
+    max-width:60%;
+    line-height:1.3;
+  }
   .divider{
     display:flex;align-items:center;gap:10px;
     margin:26px 0 22px;
@@ -702,7 +714,16 @@ document.getElementById('letterTitle').textContent = CONFIG.title;
 document.getElementById('letterSign').textContent = CONFIG.signature;
 
 const bodyEl = document.getElementById('letterBody');
+const lastIndex = CONFIG.paragraphs.length - 1;
 CONFIG.paragraphs.forEach((p,i)=>{
+  if(i === lastIndex){
+    // paragraf terakhir dijadiin catatan kecil di pojok kiri bawah surat
+    const note = document.createElement('div');
+    note.className = 'tiny-note';
+    note.textContent = p;
+    document.querySelector('.paper').appendChild(note);
+    return;
+  }
   const para = document.createElement('p');
   if(i===0){
     para.innerHTML = `<span class="drop">${p.charAt(0)}</span>${p.slice(1)}`;
